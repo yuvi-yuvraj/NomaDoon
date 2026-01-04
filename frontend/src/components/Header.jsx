@@ -1,8 +1,9 @@
 import { Container, Row, Button } from 'reactstrap'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useContext} from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import logo from "../assets/images/nomaDoon.png"
 import "./Header.css"
+import { AuthContext } from './context/AuthContext'
 
 const nav_links = [
     {
