@@ -1,6 +1,6 @@
 import { Container, Row, Button } from 'reactstrap'
 import { useRef, useEffect, useContext} from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import logo from "../assets/images/nomaDoon.png"
 import "./Header.css"
 import { AuthContext } from './context/AuthContext'
@@ -23,6 +23,14 @@ const nav_links = [
 const Header = () => {
 
     const headerRef = useRef(null);
+    const menuRef = useRef(null);
+    const navigate = useNavigate()
+    const {user, dispatch} = useContext(AuthContext)
+
+    const logout = () => {
+        dispatch({type: 'LOGOUT'})
+        navigate('/')
+    }
 
     const stickyHeaderFunc = () => {
         window.addEventListener('scroll', () => {
@@ -39,6 +47,11 @@ const Header = () => {
 
         return window.removeEventListener('scroll', stickyHeaderFunc)
     })
+
+    const toggleMenu = () => {
+        menuRef.current.classList.toggle('show__menu')
+    }
+
   return (
     <header className="header" ref={headerRef}>
         <Container>
@@ -47,11 +60,11 @@ const Header = () => {
 
                     {/* logo */}
                     <div className='logo'> 
-                        <img src={logo} alt="" />
+                        <img src={logo} alt="logo" />
                     </div>
 
                     {/* menu */}
-                    <div className='navigation'>
+                    <div className='navigation' ref={menuRef} onClick={toggleMenu}>
                         <ul className='menu d-flex align-items-center gap-5'>
                             {nav_links.map((item, index) => (
                                 <li className='nav__item' key={index}>
@@ -63,11 +76,20 @@ const Header = () => {
 
                     <div className='nav__right d-flex align-items-center gap-4'>
                         <div className='nav__btns d-flex align-items-center gap-4'>
-                            <Button className='btn secondary__btn'><Link to='/login'>Login</Link></Button>
-                            <Button className='btn primary__btn'><Link to='/register'>Register</Link></Button>
+
+                            {
+                                user? <>
+                                <h5 className='mb-0'>{user.username}</h5>
+                                <Button className='btn btn-dark' onClick={logout}>Logout</Button>
+                                </> : <>
+                                <Button className='btn secondary__btn'><Link to='/login'>Login</Link></Button>
+                                <Button className='btn primary__btn'><Link to='/register'>Register</Link></Button>
+                                </>
+                            }
+                            
                         </div>
 
-                        <span className="mobile__menu">
+                        <span className="mobile__menu" onClick={toggleMenu}>
                             <i className="ri-menu-line"></i>
                         </span>
                     </div>

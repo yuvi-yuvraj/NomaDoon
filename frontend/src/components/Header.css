@@ -2,12 +2,25 @@
 
 .header{
     width: 100%;
-    height: 80px;
-    line-height: 80px;
+  height: 80px;
+  line-height: 80px;
+  background: #fff;
+  transition: all 0.3s ease;
 }
 
-.logo img{
-    width: 20%;
+.nav__wrapper {
+  height: 80px;
+}
+
+.logo img {
+  width: 140px;
+}
+
+.header,
+.nav__item a,
+.btn,
+.mobile__menu {
+  transition: all 0.3s ease-in-out;
 }
 
 .menu{
@@ -15,10 +28,12 @@
 }
 
 .nav__item a{
-    text-decoration: none;
-    color: var(--heading-color);
-    font-weight: 500;
-    font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--heading-color);
+  font-weight: 500;
+  font-size: 1.05rem;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 .nav__item a:hover{
@@ -45,4 +60,52 @@
     left: 0;
     box-shadow: 3px 3px 8px -3px #ddd;
     z-index: 999;
+}
+
+@media only screen and (max-width: 992px){
+    .logo img{
+        width: 20%;
+    }
+
+    .navigation{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.411);
+        z-index: 999;
+        display: none;
+    }
+
+    .menu{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: calc(100% - 75%);
+        height: 100%;
+        background: #fff;
+        flex-direction: column;
+        line-height: 0.5rem;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .show__menu{
+        display: block;
+    }
+
+    .mobile__menu{
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .logo img{
+        width: 45%;
+    }
+
+    .menu{
+        width: calc(100% - 50%);
+    }
 }
