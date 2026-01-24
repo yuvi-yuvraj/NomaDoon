@@ -3,8 +3,8 @@ import { Container, Row, Col } from "reactstrap";
 import Subtitle from "../shared/Subtitle";
 import worldImg from "../../assets/images/world.png"
 import hero01 from "../../assets/images/hero01.jpeg"
-import hero02 from "../../assets/images/hero02.jpeg"
-import hero03 from "../../assets/images/hero03.jpeg"
+import hero05 from "../../assets/images/hero05.jpg"
+import hero04 from "../../assets/images/hero04.webp"
 import experienceImg from "../../assets/images/experience.png"
 
 import SearchBar from "../shared/SearchBar";
@@ -43,10 +43,10 @@ const Home = () => {
                   <img src={hero01} className="d-block w-100" alt="..."/>
                 </div>
                 <div className="carousel-item">
-                  <img src={hero02} className="d-block w-100" alt="..."/>
+                  <img src={hero04} className="d-block w-100" alt="..." height='555px'/>
                 </div>
                 <div className="carousel-item">
-                  <img src={hero03} className="d-block w-100 h-50" alt="..."/>
+                  <img src={hero05} className="d-block w-100 h-50" alt="..."/>
                 </div>
               </div>
               <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

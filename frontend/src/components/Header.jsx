@@ -80,7 +80,7 @@ const Header = () => {
                             {
                                 user? <>
                                 <h5 className='mb-0'>{user.username}</h5>
-                                <Button className='btn btn-dark' onClick={logout}>Logout</Button>
+                                <Button className='bte btn-dark' onClick={logout}>Logout</Button>
                                 </> : <>
                                 <Button className='btn secondary__btn'><Link to='/login'>Login</Link></Button>
                                 <Button className='btn primary__btn'><Link to='/register'>Register</Link></Button>
